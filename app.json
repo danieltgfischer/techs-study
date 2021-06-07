@@ -1,0 +1,12 @@
+{
+  "name": "techs-study",
+  "displayName": "techs-study",
+  "expo": {
+    "name": "techs-study",
+    "slug": "techs-study",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
