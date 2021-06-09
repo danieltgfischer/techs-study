@@ -4,10 +4,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Connection, createConnection } from 'typeorm';
 import { ActivityIndicator } from 'react-native';
-import { Home } from './screens/home';
 import { TechStudy } from './database/entities/Study';
 import { Feature } from './database/entities/Feature';
 import { DatabaseConnectionContext } from './contexts/databaseConnection';
+import { Home } from './screens/home';
+import { Form } from './screens/form';
 
 const Stack = createStackNavigator();
 
@@ -47,6 +48,7 @@ const App: React.FC = () => {
 					}}
 				>
 					<Stack.Screen name="Home" component={Home} />
+					<Stack.Screen name="Adicionar Tech" component={Form} />
 				</Stack.Navigator>
 			</NavigationContainer>
 		</DatabaseConnectionContext.Provider>
