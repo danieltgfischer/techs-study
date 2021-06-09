@@ -23,10 +23,19 @@ export const Title = styled.Text`
 
 export const Button = styled.TouchableOpacity`
 	background-color: #f54d3e;
+	width: 40%;
+	padding: 10px;
+	border-radius: 7px;
 `;
 
 export const ButtonLabel = styled.Text`
 	color: #fff;
 	font-size: 24px;
 	text-align: center;
+`;
+
+export const ContainerButton = styled.View`
+	width: 100%;
+	align-items: flex-end;
+	padding: 0 15px 15px 0;
 `;

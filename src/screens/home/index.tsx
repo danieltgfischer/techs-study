@@ -7,6 +7,7 @@ import {
 	Button,
 	ButtonLabel,
 	Container,
+	ContainerButton,
 	FlatList,
 	flatListStyle,
 	Title,
@@ -21,7 +22,6 @@ export const Home: React.FC = ({ navigation }: any) => {
 		techsRepository.find().then(techsDb => setTechs(techsDb));
 		navigation.addListener('focus', () => {
 			techsRepository.find().then(techsDb => {
-				console.log(techsDb);
 				setTechs(techsDb);
 			});
 		});
@@ -33,9 +33,11 @@ export const Home: React.FC = ({ navigation }: any) => {
 
 	return (
 		<Container>
-			<Button onPress={() => navigation.navigate('Adicionar Tech')}>
-				<ButtonLabel>Adicionar</ButtonLabel>
-			</Button>
+			<ContainerButton>
+				<Button onPress={() => navigation.navigate('Adicionar Tech')}>
+					<ButtonLabel>Adicionar</ButtonLabel>
+				</Button>
+			</ContainerButton>
 			<Title>Tecnologias:</Title>
 			<FlatList
 				data={techs}
