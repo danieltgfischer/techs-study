@@ -39,7 +39,13 @@ const App: React.FC = () => {
 	return (
 		<DatabaseConnectionContext.Provider value={{ connection }}>
 			<NavigationContainer>
-				<Stack.Navigator initialRouteName="Home">
+				<Stack.Navigator
+					initialRouteName="Home"
+					screenOptions={{
+						headerTitleAlign: 'center',
+						headerTintColor: '#f54d3e',
+					}}
+				>
 					<Stack.Screen name="Home" component={Home} />
 				</Stack.Navigator>
 			</NavigationContainer>
