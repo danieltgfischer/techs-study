@@ -27,14 +27,14 @@ export const Home: React.FC = ({ navigation }: any) => {
 		});
 	}, [connection, navigation]);
 
-	const renderItem = ({ item: { name, description } }) => (
-		<TechItem {...{ name, description }} />
+	const renderItem = ({ item: { name, description, id } }) => (
+		<TechItem {...{ name, description, id }} />
 	);
 
 	return (
 		<Container>
 			<ContainerButton>
-				<Button onPress={() => navigation.navigate('Adicionar Tech')}>
+				<Button onPress={() => navigation.navigate('Adicionar_Tech')}>
 					<ButtonLabel>Adicionar</ButtonLabel>
 				</Button>
 			</ContainerButton>

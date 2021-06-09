@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import React, { useCallback, useEffect, useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, RouteProp } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Connection, createConnection } from 'typeorm';
 import { ActivityIndicator } from 'react-native';
@@ -9,6 +9,7 @@ import { Feature } from './database/entities/Feature';
 import { DatabaseConnectionContext } from './contexts/databaseConnection';
 import { Home } from './screens/home';
 import { Form } from './screens/form';
+import { Study } from './screens/study';
 
 const Stack = createStackNavigator();
 
@@ -48,7 +49,18 @@ const App: React.FC = () => {
 					}}
 				>
 					<Stack.Screen name="Home" component={Home} />
-					<Stack.Screen name="Adicionar Tech" component={Form} />
+					<Stack.Screen
+						name="Adicionar_Tech"
+						options={() => ({ title: 'Adicionar Estudo' })}
+						component={Form}
+					/>
+					<Stack.Screen
+						name="Study"
+						options={({ route }: any) => ({
+							title: route.params?.name || '',
+						})}
+						component={Study}
+					/>
 				</Stack.Navigator>
 			</NavigationContainer>
 		</DatabaseConnectionContext.Provider>
