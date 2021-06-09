@@ -5,6 +5,8 @@ export const flatListStyle = StyleSheet.create({
 	content: { alignItems: 'center', width: '100%' },
 });
 
+export const FlatList = styled.FlatList``;
+
 export const Container = styled.SafeAreaView`
 	display: flex;
 	height: 100%;
@@ -12,8 +14,6 @@ export const Container = styled.SafeAreaView`
 	background-color: #fff;
 	padding: 20px 0 0;
 `;
-
-export const FlatList = styled.FlatList``;
 
 export const Title = styled.Text`
 	color: #f54d3e;
