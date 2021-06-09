@@ -3,19 +3,29 @@ import { DatabaseConnectionContext } from '@/contexts/databaseConnection';
 import { TechStudy } from '@/database/entities/Study';
 import { TechItem } from '@/components/techItems';
 import { EmptyTechContainer } from '@/components/emptyTechs';
-import { Container, FlatList, flatListStyle, Title } from './styles';
+import {
+	Button,
+	ButtonLabel,
+	Container,
+	FlatList,
+	flatListStyle,
+	Title,
+} from './styles';
 
-export const Home: React.FC = () => {
+export const Home: React.FC = ({ navigation }: any) => {
 	const { connection } = useContext(DatabaseConnectionContext);
-	const [techs, setTechs] = useState([
-		// { name: 'Flutter', description: 'mobile app', id: '1' },
-		// { name: 'React Native', description: 'mobile app', id: '2' },
-	]);
+	const [techs, setTechs] = useState([]);
 
-	// useEffect(() => {
-	// 	const techsRepository = connection.getRepository(TechStudy);
-	// 	techsRepository.find().then(techsDb => setTechs(techsDb));
-	// }, [connection]);
+	useEffect(() => {
+		const techsRepository = connection.getRepository(TechStudy);
+		techsRepository.find().then(techsDb => setTechs(techsDb));
+		navigation.addListener('focus', () => {
+			techsRepository.find().then(techsDb => {
+				console.log(techsDb);
+				setTechs(techsDb);
+			});
+		});
+	}, [connection, navigation]);
 
 	const renderItem = ({ item: { name, description } }) => (
 		<TechItem {...{ name, description }} />
@@ -23,11 +33,14 @@ export const Home: React.FC = () => {
 
 	return (
 		<Container>
+			<Button onPress={() => navigation.navigate('Adicionar Tech')}>
+				<ButtonLabel>Adicionar</ButtonLabel>
+			</Button>
 			<Title>Tecnologias:</Title>
 			<FlatList
 				data={techs}
 				renderItem={renderItem}
-				keyExtractor={item => item.id}
+				keyExtractor={item => String(item.id)}
 				contentContainerStyle={flatListStyle.content}
 				ListEmptyComponent={EmptyTechContainer}
 			/>
