@@ -20,6 +20,7 @@ export class TechStudy extends BaseEntity {
 
 	@OneToMany(() => Feature, features => features.tech, {
 		cascade: true,
+		nullable: false,
 	})
 	features: Feature;
 }
